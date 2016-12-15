@@ -13,7 +13,7 @@ electron_charge = 1.6e-19;
 % ary = linspace(0, 2.5, 11);
 % ary = 1.7;
 % received_photons = linspace(1, 41, 21);
-received_photons = [50];
+received_photons = [40];
 arraylength = length(received_photons);
 % received_photons = 10.^ary;
 %
@@ -30,6 +30,7 @@ sampling_rate = 2*bandwidth;
 sampling_period = 1/sampling_rate;
 initial_phase = 0;
 number_of_points = 200;
+number_of_points_SR = number_of_points * SRF;
 observation_time = sampling_period * (number_of_points);
 frequency_resolution = 1/observation_time;
 %
@@ -39,14 +40,14 @@ index = linspace(0, number_of_points-1, number_of_points);
 index_SR = linspace(0, number_of_points*SRF-1, number_of_points*SRF);
 t = sampling_period * index;
 f = frequency_resolution * index;
-t_SR = sampling_period * index_SR; 
+t_SR = sampling_period * index_SR;
 f_SR = (frequency_resolution / SRF) * index_SR;
 Ps = electron_charge * received_photons / (responsivity * observation_time);
 % Ps_ref = Ps(1);
 amplitude = 2*responsivity*sqrt(Ps);
 amplitude = amplitude/amplitude(end);
 % amplitude = ;
-x = amplitude' * sin(2*pi*frequency*t + initial_phase);
+x = amplitude' * cos(2*pi*frequency*t + initial_phase);
 x = repmat(x,repetition,1);
 %
 
@@ -60,33 +61,101 @@ SNR = 20*log10((amplitude/sqrt(2))/sigma);
 delta_noise = sqrt(number_of_points + sqrt(2*number_of_points))*sigma; % good approximation of norm(z)
 
 y = x + noise;
+y_SR = zeros(repetition*arraylength,number_of_points_SR);
+y_SR(:,1:length(y)) = y;
+
+y_freq = abs(fft(y,[],2));
+y_SR_freq = abs(fft(y_SR,[],2));
 %
 
 %% l1-min for super-res search
-asize = 101;
-a = linspace(0.5,1.5,asize);
+asize = 21;
+a = linspace(0.6,1.1,asize);
 solution = zeros(repetition,arraylength); 
+solution_new = zeros(repetition,arraylength); 
+solution_nozp = zeros(repetition,arraylength);
 RMSE_l1 = zeros(1,arraylength);
+RMSE_l1_new = zeros(1,arraylength);
+RMSE_l1_nozp = zeros(1,arraylength);
+% margin = 0.5*(length(f_SR)-length(y));
 
 for k=1:arraylength
     for l=1:repetition
+        l1norm = zeros(length(f_SR)/2,asize);
         error = zeros(length(f_SR)/2,asize);
+        l1norm_new = zeros(length(f_SR)/2,asize);
+        error_new = zeros(length(f_SR)/2,asize);
+        l1norm_nozp = zeros(length(f_SR)/2,asize);
+        error_nozp = zeros(length(f_SR)/2,asize);
+%         error_th = zeros(length(f_SR)/2,asize);
+%         errorvector = zeros(1, length(f_SR)/2);
 
         for i=1:length(f_SR)/2
-            temp = a'*sin(2*pi*f_SR(i)*t+initial_phase);
+            temp = a'*cos(2*pi*f_SR(i)*t+initial_phase);
+%             temp = zeros(asize,length(f_SR));
+            
+            temp_new = zeros(asize,length(f_SR));
+            temp_new(:,1:length(y)) = a'*cos(2*pi*f_SR(i)*t+initial_phase);
+            
+            temp_nozp = a'*cos(2*pi*f_SR(i)*t+initial_phase);
+           
+%             temperror = [];
             for j=1:asize
-                error(i,j) = norm(temp(j,:)-y((l-1)*arraylength+k,:));
+                temp_lp = fft(temp_new(j,:));
+                temp_lp_nozp = fft(temp_nozp(j,:));
+                l1norm_new(i,j) = norm(temp_lp-y_SR_freq((l-1)*arraylength+k,:),1);
+                error_new(i,j) = norm(temp_lp-y_SR_freq((l-1)*arraylength+k,:),1);
+                l1norm_nozp(i,j) = norm(temp_lp_nozp-y_freq((l-1)*arraylength+k,:),1);
+                error_nozp(i,j) = norm(temp_lp_nozp-y_freq((l-1)*arraylength+k,:),1);
+                 
+                l1norm(i,j) = norm(temp(j,:)-y((l-1)*arraylength+k,:),1);
+                error(i,j) = norm(temp(j,:)-y((l-1)*arraylength+k,:),1);
+%                 err = norm(temp(j,:)-y((l-1)*arraylength+k,:));
+%                 if error(i,j) <= delta_noise
+% %                     temperror = [temperror err];
+%                     error_th(i,j) = error(i,j);
+%                 else
+%                     error_th(i,j) = inf;
+%                 end
             end
+%             if length(temperror) ~= 0
+%                 errorvector(i) = min(temperror);
+%             else
+%                 errorvector(i) = inf;
+%             end
         end
-        % figure();
-        % surf(a, f_SR(1:end/2), error);
-        % xlabel('amplitude','FontSize',15);
-        % ylabel('frequency','FontSize',15);
+        figure(1);
+        surf(a, f_SR(1:end/2), error);
+        xlabel('Amplitude','FontSize',15);
+        ylabel('Frequency (Hz)','FontSize',15);
+        zlabel('L1 Error','FontSize',15);
+%         matlab2tikz('./final_report/figure4b.tex');
+        
+        figure(2);
+        surf(a, f_SR(1:end/2), error_new);
+        xlabel('Amplitude','FontSize',15);
+        ylabel('Frequency (Hz)','FontSize',15);
+        zlabel('L1 Error','FontSize',15);
+%         matlab2tikz('./final_report/figure4b.tex');
+
+        figure(3);
+        surf(a, f_SR(1:end/2), error_nozp);
+        xlabel('Amplitude','FontSize',15);
+        ylabel('Frequency (Hz)','FontSize',15);
+        zlabel('L1 Error','FontSize',15);
+%         matlab2tikz('./final_report/figure4b.tex');
+
 
         [ymin,idxmin] = min(min(error,[],2));
+%         [ymin,idxmin] = min(errorvector);
         solution(l,k) = f_SR(idxmin);
+        [ymin,idxmin] = min(min(error_new,[],2));
+        solution_new(l,k) = f_SR(idxmin);
+        [ymin,idxmin] = min(min(error_new,[],2));
+        solution_new(l,k) = f_SR(idxmin);
     end
     RMSE_l1(k) = rms(solution(:,k) - frequency);
+    RMSE_l1_new(k) = rms(solution_new(:,k) - frequency);
 end
 
 
