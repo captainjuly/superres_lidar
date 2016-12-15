@@ -1,0 +1,84 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=6.028in,
+height=4.754in,
+at={(1.011in,0.642in)},
+scale only axis,
+xmin=0,
+xmax=42,
+xtick={ 0, 10, 20, 30, 40},
+xlabel style={font=\color{white!15!black}},
+xlabel={SNR},
+ymin=0,
+ymax=50,
+ytick={ 0, 10, 20, 30, 40, 50},
+ylabel style={font=\color{white!15!black}},
+ylabel={Error (Hz)},
+axis background/.style={fill=white},
+title={RMS Support Detection Error for DFT and MUSIC Receiver},
+xmajorgrids,
+ymajorgrids,
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1, line width=2.0pt]
+  table[row sep=crcr]{%
+100	0.5\\
+102.157894736842	0.5\\
+104.315789473684	0.5\\
+106.473684210526	0.5\\
+108.631578947368	0.5\\
+110.789473684211	0.5\\
+112.947368421053	0.5\\
+115.105263157895	0.5\\
+117.263157894737	0.5\\
+119.421052631579	0.5\\
+121.578947368421	0.5\\
+123.736842105263	0.5\\
+125.894736842105	0.5\\
+128.052631578947	0.5\\
+130.210526315789	0.5\\
+132.368421052632	0.5\\
+134.526315789474	0.5\\
+136.684210526316	0.5\\
+138.842105263158	0.5\\
+141	0.5\\
+};
+\addlegendentry{DFT}
+
+\addplot [color=mycolor2, line width=2.0pt]
+  table[row sep=crcr]{%
+100	1.0494271668582\\
+102.157894736842	0.756526524453802\\
+104.315789473684	0.70379200134155\\
+106.473684210526	0.811860052592266\\
+108.631578947368	0.55253419519993\\
+110.789473684211	2.55073451514901\\
+112.947368421053	0.487767307648979\\
+115.105263157895	0.784729799067135\\
+117.263157894737	1.08117156874363\\
+119.421052631579	0.619000440064305\\
+121.578947368421	0.488617072016939\\
+123.736842105263	0.502217145423397\\
+125.894736842105	1.70710108284649\\
+128.052631578947	0.509531720163268\\
+130.210526315789	0.545394200541567\\
+132.368421052632	1.17031716115352\\
+134.526315789474	0.751873220186355\\
+136.684210526316	0.482232060329636\\
+138.842105263158	0.600497802222151\\
+141	0.313496336506393\\
+};
+\addlegendentry{MUSIC}
+
+\end{axis}
+\end{tikzpicture}%

@@ -1,0 +1,54 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=6.028in,
+height=4.754in,
+at={(1.011in,0.642in)},
+scale only axis,
+xmin=0,
+xmax=20,
+xlabel style={font=\color{white!15!black}},
+xlabel={SNR},
+ymin=0,
+ymax=0.9,
+ylabel style={font=\color{white!15!black}},
+ylabel={Symbol Error Rate},
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={Symbol Error Rate in 50-ary FSK Receiver},
+xmajorgrids,
+ymajorgrids
+]
+\addplot [color=mycolor1, forget plot]
+  table[row sep=crcr]{%
+1	0.88437668986774\\
+2	0.755091341404429\\
+3	0.615478472893133\\
+4	0.48243162039097\\
+5	0.366056615146223\\
+6	0.270164134225235\\
+7	0.194759751087941\\
+8	0.137575139357851\\
+9	0.095490565089737\\
+10	0.0652712788902791\\
+11	0.0440196676598589\\
+12	0.0293378261392966\\
+13	0.0193494769328976\\
+14	0.0126439589350968\\
+15	0.0081944108329225\\
+16	0.00527188336488082\\
+17	0.00336955597267505\\
+18	0.00214113094360025\\
+19	0.00135346953058918\\
+20	0.000851588262185303\\
+};
+\end{axis}
+\end{tikzpicture}%
