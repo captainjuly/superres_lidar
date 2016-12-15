@@ -1,4 +1,4 @@
-PWD /Users/taehwan/Box Sync/Berkeley life/class/fall16/ee290s/lidar/final_report
+PWD /Users/taehwan/Box Sync/Berkeley life/class/fall16/ee290s/superres_lidar/final_report
 INPUT /usr/local/texlive/2016/texmf.cnf
 INPUT /usr/local/texlive/2016/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -375,6 +375,12 @@ INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/adobe/helvetic/phvr8r.tfm
 INPUT /Users/taehwan/Box Sync/Berkeley life/class/fall16/ee290s/lidar/final_report/figures/figure3.png
 INPUT /Users/taehwan/Box Sync/Berkeley life/class/fall16/ee290s/lidar/final_report/figures/figure3.png
 INPUT /Users/taehwan/Box Sync/Berkeley life/class/fall16/ee290s/lidar/final_report/figures/figure3.png
+INPUT ./figures/figure4a.tex
+INPUT ./figures/figure4a.tex
+INPUT ./figures/figure4b.png
+INPUT ./figures/figure4b.png
+INPUT ./figures/figure4b.png
+INPUT ./figures/figure4b.png
 INPUT ee290s_final_report.bbl
 INPUT ee290s_final_report.bbl
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmr9.tfm

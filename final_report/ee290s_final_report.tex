@@ -904,6 +904,39 @@ Secondly, we can leverage the fact that it is almost always the case that the li
 
 There are $SRF \times N$ supports in the optimization space, and we can parallelize the search process of finding the amplitude of minimum magnitude that still satisfies $\| \mathcal{F}_n \tilde{x} - y \|_2 \leq \delta$. After that process, one can simply pick the support with smallest magnitude. 
 
+\begin{figure}[t!]
+\centering
+            \begin{subfigure}[b]{0.47\columnwidth}
+                \centering
+		\resizebox{\columnwidth}{!}{
+    \huge
+    {
+    \input{./figures/figure4a.tex}
+}
+}
+\caption{}
+\label{fig4a}
+\end{subfigure}
+\hfill
+            \begin{subfigure}[b]{0.47\columnwidth}
+                \centering
+		\resizebox{\columnwidth}{!}{
+            \includegraphics[]{./figures/figure4b.png}
+    %\huge
+    %{
+    %\input{./figures/figure4b.tex}
+%%\input{}
+}
+%}
+\caption{}
+\label{fig4b}
+\end{subfigure}
+\caption{
+    (a) Symbol error rate for 50-ary FSK communication link (b) Root-mean-squared error of the frequency estimation by modeling DFT detector as a MFSK link, when $f_{target}=15.5Hz$
+}
+\label{fig4}
+\end{figure}
+
 %Fig. \ref{diephoto}(a) shows the die photo of the MPC equalizer chip, which was fabricated in 28nm FDSOI CMOS. A 3-bit core for PAM2 and \textit{two-eye} modulation, and a 4-bit core for PAM4 modulation were implemented. The final DAC was implemented using a segmented voltage-mode driver (Fig. \ref{diephoto}(b)) matched to 50$\Omega$ when all segments are enabled. To avoid the nonlinearity inherent in this DAC, we used 32 segments, more than actual signal level and a lookup table to map the MPC solution to the number of ``on'' segments (resulting on-segment vs. output level plot is shown in Fig. \ref{diephoto}(c)). The total swing of the transmitter when loaded by the 50$\Omega$ termination is 462$\textrm{mV}_{\textrm{pp}}$.
 
 %To demonstrate equalizer performance with a reflective multidrop channel, the chip was connected to an oscilloscope through two series connected 8-inch differential copper traces with two stubs and 3m of coaxial cable. The pulse response and normalized tap coefficients of the entire channel at 4.5GBaud/s is shown in Fig. \ref{impulse}(a). Indeed, this channel is corrupted by reflection due to the impedance mismatch from the via stubs, and the eye for PAM2 modulated data with a 4.5Gb/s PRBS31 sequence is completely closed (Fig. \ref{impulse}(b)). By activating MPC equalization in the 3-bit core, the eye is fully open in PAM2 mode (Fig. \ref{eyes}(a)). The \textit{two-eye} mode shows similar performance (Fig. \ref{eyes}(b)). 
