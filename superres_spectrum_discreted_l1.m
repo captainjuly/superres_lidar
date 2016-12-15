@@ -1,4 +1,4 @@
-%% Script to perform super-resolution of spikes from low frequency
+    %% Script to perform super-resolution of spikes from low frequency
 addpath ./matlab2tikz-matlab2tikz-816f875/src
 clear all;
 close all;
@@ -12,8 +12,8 @@ electron_charge = 1.6e-19;
 %% Receiving power
 % ary = linspace(0, 2.5, 11);
 % ary = 1.7;
-% received_photons = linspace(1, 41, 21);
-received_photons = [50];
+received_photons = linspace(1, 41, 21);
+%  received_photons = [50];
 arraylength = length(received_photons);
 % received_photons = 10.^ary;
 %
@@ -23,7 +23,7 @@ SRF = 10;
 %
 
 %% FFT frame creation
-repetition = 100;
+repetition = 1000;
 frequency = 15.5;
 bandwidth = 100;
 sampling_rate = 2*bandwidth;
@@ -65,8 +65,10 @@ y = x + noise;
 %% l1-min for super-res search
 asize = 101;
 a = linspace(0.5,1.5,asize);
-solution = zeros(repetition,arraylength); 
+solutionl1 = zeros(repetition,arraylength); 
+solutionl2 = zeros(repetition,arraylength); 
 RMSE_l1 = zeros(1,arraylength);
+RMSE_l2 = zeros(1,arraylength);
 
 % for k=1:arraylength
 %     for l=1:repetition
@@ -93,22 +95,25 @@ RMSE_l1 = zeros(1,arraylength);
 for k=1:arraylength
     parfor l=1:repetition
 %         error = zeros(length(f_SR)/2,asize);
-        error = zeros(1, asize);
-        avector = zeros(1, length(f_SR)/2);
+        errorl1 = zeros(1, asize);
+        errorl2 = zeros(1, asize);
+        avectorl1 = zeros(1, length(f_SR)/2);
+        avectorl2 = zeros(1, length(f_SR)/2);
 %         avector(1) = inf;
 
         for i=1:length(f_SR)/2
             temp = a'*sin(2*pi*f_SR(i)*t+initial_phase);
-            tempa = [];
             for j=1:asize
 %                 error(i,j) = norm(temp(j,:)-y((l-1)*arraylength+k,:),1);
-                error(j) = norm(temp(j,:)-y((l-1)*arraylength+k,:),1);
+                errorl1(j) = norm(temp(j,:)-y((l-1)*arraylength+k,:),1);
+                errorl2(j) = norm(temp(j,:)-y((l-1)*arraylength+k,:),2);
 %                 err = norm(temp(j,:)-y((l-1)*arraylength+k,:));
 %                 if err <= delta_noise
 %                     tempa = [tempa a(j)];
 %                 end
             end
-            avector(i) = min(error);
+            avectorl1(i) = min(errorl1);
+            avectorl2(i) = min(errorl2);
 %             if length(tempa) ~= 0
 %                 avector(i) = min(tempa);
 %             else
@@ -121,11 +126,14 @@ for k=1:arraylength
         % ylabel('frequency','FontSize',15);
 
 %         [ymin,idxmin] = min(min(error,[],2));
-        [ymin,idxmin] = min(avector);
-        solution(l,k) = f_SR(idxmin);
+        [ymin,idxmin] = min(avectorl1);
+        solutionl1(l,k) = f_SR(idxmin);
+        [ymin,idxmin] = min(avectorl2);
+        solutionl2(l,k) = f_SR(idxmin);
         fprintf('array: %d, repetition: %d\n',k,l)
     end
-    RMSE_l1(k) = rms(solution(:,k) - frequency);
+    RMSE_l1(k) = rms(solutionl1(:,k) - frequency);
+    RMSE_l2(k) = rms(solutionl2(:,k) - frequency);
 end
 
 
@@ -193,10 +201,12 @@ hold on;
 plot(received_photons, RMSE_music,'LineWidth',2);
 hold on;
 plot(received_photons, RMSE_l1,'LineWidth',2);
+hold on;
+plot(received_photons, RMSE_l2,'LineWidth',2);
 title('Detection Error for DFT/MUSIC/L1 (Low SNR)','FontSize',18,'FontWeight','normal');
 xlabel('SNR','FontSize',15);
 ylabel('Error (Hz)','FontSize',15);
-legend('DFT','MUSIC','L1');
+legend('DFT','MUSIC','L1','L2');
 grid on;
 set(gca,'xlim',[0 41])
 set(gca,'xtick',[0:10:40])
