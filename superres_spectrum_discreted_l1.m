@@ -214,3 +214,16 @@ set(gca,'ylim',[0 50])
 set(gca,'ytick',[0:10:50])
 % matlab2tikz('./final_report/figure2a.tex');
 %
+
+%% Save data
+
+savefile_fft = './saved_data/fft.mat';
+savefile_music = './saved_data/music.mat';
+savefile_l1 = './saved_data/l1.mat';
+savefile_l2 = './saved_data/l2.mat';
+
+save(savefile_fft,'RMSE_fft');
+save(savefile_music,'RMSE_music');
+save(savefile_l1,'RMSE_l1');
+save(savefile_l2,'RMSE_l2');
+
