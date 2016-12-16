@@ -2,8 +2,9 @@ addpath ./matlab2tikz-matlab2tikz-816f875/src
 
 % Compute theoretical RMSE
 iterbegin = 1;
-iterations = 20;
-received_photons = linspace(iterbegin,iterbegin+iterations-1,iterations);
+iterations = 21;
+% received_photons = linspace(iterbegin,iterbegin+iterations-1,iterations);
+received_photons = linspace(1, 20, iterations);
 
 SER = zeros(1,iterations);
 % NN = number_of_points/2;

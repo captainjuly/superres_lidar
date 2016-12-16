@@ -73,10 +73,10 @@ asize = 21;
 a = linspace(0.6,1.1,asize);
 solution = zeros(repetition,arraylength); 
 solution_new = zeros(repetition,arraylength); 
-solution_nozp = zeros(repetition,arraylength);
+% solution_nozp = zeros(repetition,arraylength);
 RMSE_l1 = zeros(1,arraylength);
 RMSE_l1_new = zeros(1,arraylength);
-RMSE_l1_nozp = zeros(1,arraylength);
+% RMSE_l1_nozp = zeros(1,arraylength);
 % margin = 0.5*(length(f_SR)-length(y));
 
 for k=1:arraylength
@@ -85,8 +85,8 @@ for k=1:arraylength
         error = zeros(length(f_SR)/2,asize);
         l1norm_new = zeros(length(f_SR)/2,asize);
         error_new = zeros(length(f_SR)/2,asize);
-        l1norm_nozp = zeros(length(f_SR)/2,asize);
-        error_nozp = zeros(length(f_SR)/2,asize);
+%         l1norm_nozp = zeros(length(f_SR)/2,asize);
+%         error_nozp = zeros(length(f_SR)/2,asize);
 %         error_th = zeros(length(f_SR)/2,asize);
 %         errorvector = zeros(1, length(f_SR)/2);
 
@@ -97,16 +97,16 @@ for k=1:arraylength
             temp_new = zeros(asize,length(f_SR));
             temp_new(:,1:length(y)) = a'*cos(2*pi*f_SR(i)*t+initial_phase);
             
-            temp_nozp = a'*cos(2*pi*f_SR(i)*t+initial_phase);
+%             temp_nozp = a'*cos(2*pi*f_SR(i)*t+initial_phase);
            
 %             temperror = [];
             for j=1:asize
                 temp_lp = fft(temp_new(j,:));
-                temp_lp_nozp = fft(temp_nozp(j,:));
+%                 temp_lp_nozp = fft(temp_nozp(j,:));
                 l1norm_new(i,j) = norm(temp_lp-y_SR_freq((l-1)*arraylength+k,:),1);
                 error_new(i,j) = norm(temp_lp-y_SR_freq((l-1)*arraylength+k,:),1);
-                l1norm_nozp(i,j) = norm(temp_lp_nozp-y_freq((l-1)*arraylength+k,:),1);
-                error_nozp(i,j) = norm(temp_lp_nozp-y_freq((l-1)*arraylength+k,:),1);
+%                 l1norm_nozp(i,j) = norm(temp_lp_nozp-y_freq((l-1)*arraylength+k,:),1);
+%                 error_nozp(i,j) = norm(temp_lp_nozp-y_freq((l-1)*arraylength+k,:),1);
                  
                 l1norm(i,j) = norm(temp(j,:)-y((l-1)*arraylength+k,:),1);
                 error(i,j) = norm(temp(j,:)-y((l-1)*arraylength+k,:),1);
@@ -138,19 +138,9 @@ for k=1:arraylength
         zlabel('L1 Error','FontSize',15);
 %         matlab2tikz('./final_report/figure4b.tex');
 
-        figure(3);
-        surf(a, f_SR(1:end/2), error_nozp);
-        xlabel('Amplitude','FontSize',15);
-        ylabel('Frequency (Hz)','FontSize',15);
-        zlabel('L1 Error','FontSize',15);
-%         matlab2tikz('./final_report/figure4b.tex');
-
-
         [ymin,idxmin] = min(min(error,[],2));
 %         [ymin,idxmin] = min(errorvector);
         solution(l,k) = f_SR(idxmin);
-        [ymin,idxmin] = min(min(error_new,[],2));
-        solution_new(l,k) = f_SR(idxmin);
         [ymin,idxmin] = min(min(error_new,[],2));
         solution_new(l,k) = f_SR(idxmin);
     end

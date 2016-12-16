@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex ee290s_final_report"] 1481839273 "ee290s_final_report.aux" "ee290s_final_report.bbl" "ee290s_final_report" 1481839275
+["bibtex ee290s_final_report"] 1481845452 "ee290s_final_report.aux" "ee290s_final_report.bbl" "ee290s_final_report" 1481845454
   "./IEEEtran.bst" 1481763758 61652 4eaa268944b68d7a3e357e34146ce09e ""
-  "ee290s_final_report.aux" 1481839275 3081 8f98b1d4e9135389be73c20a0e3f2032 ""
+  "ee290s_final_report.aux" 1481845454 3081 8f98b1d4e9135389be73c20a0e3f2032 ""
   "ee290s_final_report.bcf" 0 -1 0 ""
   "reference.bib" 1481763758 9951 679f8413c2fa14d611179472312c935c ""
   (generated)
   "ee290s_final_report.bbl"
-["pdflatex"] 1481839273 "ee290s_final_report.tex" "ee290s_final_report.pdf" "ee290s_final_report" 1481839275
+["pdflatex"] 1481845452 "ee290s_final_report.tex" "ee290s_final_report.pdf" "ee290s_final_report" 1481845454
   "/Users/taehwan/Box Sync/Berkeley life/class/fall16/ee290s/lidar/final_report/figures/figure3.png" 1481608797 404564 7b8531c1f619788c386c1102dc1cc25c ""
   "/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -237,16 +237,16 @@
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1481654543 3873678 6bf4e6e10e9d9ce60fa9221d6a3f4b40 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
   "IEEEtran.cls" 1481763758 207390 d653df0f34cc52792528fb4a3b56093b ""
-  "ee290s_final_report.aux" 1481839275 3081 8f98b1d4e9135389be73c20a0e3f2032 ""
-  "ee290s_final_report.bbl" 1481839273 4102 ec34bc54695667efcafca82b7d67309e "bibtex ee290s_final_report"
-  "ee290s_final_report.tex" 1481839270 65810 07783f00566e8182c030c3ea2589de0d ""
+  "ee290s_final_report.aux" 1481845454 3081 8f98b1d4e9135389be73c20a0e3f2032 ""
+  "ee290s_final_report.bbl" 1481845452 4102 ec34bc54695667efcafca82b7d67309e "bibtex ee290s_final_report"
+  "ee290s_final_report.tex" 1481845396 65811 3584d86e132dd79a44526c0e6f441ad1 ""
+  "figures/dfttheory.tex" 1481845364 3148 fa3dd55f56694b0173f5c268842271f5 ""
   "figures/figure1a.tex" 1481763758 1319 eab4d975871ad528ecda69a7aa2db64a ""
-  "figures/figure1b.tex" 1481763758 1256 2d74525f498b58ac8f25917d30e041fd ""
   "figures/figure2a.tex" 1481763758 2445 b283cf288753af80d7068c7ce7e4cd82 ""
   "figures/figure2b.tex" 1481763758 2275 6e07247d1eb665a3f422b4f2d827ce31 ""
   "figures/figure4a.tex" 1481827384 3218 8197aa5b8d48f9adf14950e22e14e1da ""
   "figures/figure4b.png" 1481838893 325279 5e85348aedd3582879a4d5d0b7648b7e ""
   (generated)
+  "ee290s_final_report.aux"
   "ee290s_final_report.pdf"
   "ee290s_final_report.log"
-  "ee290s_final_report.aux"

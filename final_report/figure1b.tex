@@ -1,0 +1,56 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=6.028in,
+height=4.754in,
+at={(1.011in,0.642in)},
+scale only axis,
+xmin=0,
+xmax=20,
+xtick={ 0,  5, 10, 15, 20},
+xlabel style={font=\color{white!15!black}},
+xlabel={SNR},
+ymin=0,
+ymax=20,
+ytick={ 0,  5, 10, 15, 20},
+ylabel style={font=\color{white!15!black}},
+ylabel={Error (Hz)},
+axis background/.style={fill=white},
+title={RMS Error for Frequency Estimation},
+xmajorgrids,
+ymajorgrids
+]
+\addplot [color=mycolor1, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+1	16.6792373828277\\
+1.95	15.4851307022672\\
+2.9	14.0729947328578\\
+3.85	12.5648048587393\\
+4.8	11.0507616432338\\
+5.75	9.59553242120846\\
+6.7	8.24177533923183\\
+7.65	7.0132802058324\\
+8.6	5.92021516822793\\
+9.55	4.9636391563228\\
+10.5	4.13798268059587\\
+11.45	3.43390176628184\\
+12.4	2.84000699615452\\
+13.35	2.34415797402354\\
+14.3	1.93438503041159\\
+15.25	1.59938002429185\\
+16.2	1.32881692141728\\
+17.15	1.11342742615495\\
+18.1	0.944935982862565\\
+19.05	0.815891702233791\\
+20	0.719473436103265\\
+};
+\end{axis}
+\end{tikzpicture}%

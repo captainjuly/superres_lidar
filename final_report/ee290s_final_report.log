@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.13)  15 DEC 2016 14:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.13)  15 DEC 2016 15:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -883,7 +883,7 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 
 (./figures/figure1a.tex
 LaTeX Font Info:    Calculating math sizes for size <20> on input line 54.
-) (./figures/figure1b.tex) [3] [4]
+) (./figures/dfttheory.tex) [3] [4]
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 783.
 
 
@@ -925,10 +925,10 @@ See the caption package documentation for explanation.
 
 [7 <./figures/figure4b.png (PNG copy)>] (./ee290s_final_report.aux) ) 
 Here is how much of TeX's memory you used:
- 26909 strings out of 493013
- 671231 string characters out of 6133342
- 922287 words of memory out of 5000000
- 29951 multiletter control sequences out of 15000+600000
+ 26915 strings out of 493013
+ 671342 string characters out of 6133342
+ 926287 words of memory out of 5000000
+ 29957 multiletter control sequences out of 15000+600000
  49200 words of font info for 114 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  69i,23n,120p,1103b,2374s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -954,7 +954,7 @@ nts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/typ
 e1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/tim
 es/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmri8a
 .pfb>
-Output written on ee290s_final_report.pdf (7 pages, 842414 bytes).
+Output written on ee290s_final_report.pdf (7 pages, 843525 bytes).
 PDF statistics:
  116 PDF objects out of 1000 (max. 8388607)
  83 compressed objects within 1 object stream
